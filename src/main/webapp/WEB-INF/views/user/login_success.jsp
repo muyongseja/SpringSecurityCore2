@@ -8,9 +8,10 @@ isELIgnored="false"%>
 </head>
 <body>
 <h2>Login Success</h2>
-님! 환영합니다.<br>
+${userLogInfo.username}님! 환영합니다.<br>
 <a href="logout">로그아웃</a><br>
-<a href="page1">페이지1</a><br>
+<a href="${pageContext.servletContext.contextPath}/page1">페이지1</a><br>
+<a href="${pageContext.servletContext.contextPath}/admin/admin">관리자</a><br>
 </body>
 </html>
 

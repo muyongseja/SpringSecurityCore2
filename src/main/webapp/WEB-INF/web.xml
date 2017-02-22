@@ -12,6 +12,19 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- 
+		세션 중복 로그인 방지로 인해 발생되는 문제 해결을 위해 작성.
+		만약 세션을 1개만 허용했을 경우 로그아웃을 해도 바로 이 사실이 전달되지 않아서
+		같은 로그인 아이디로 로그인을 할 수 없었다.
+		그래서 아래와 같은 리스너를 통해서 세션에서 발생되는 이벤트는 바로 바로 전달
+		될 수 있도록 설정하는 것이다.
+	 -->
+	<listener>
+  		<listener-class>
+  		org.springframework.security.web.session.HttpSessionEventPublisher
+  		</listener-class>
+	</listener>
+	
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

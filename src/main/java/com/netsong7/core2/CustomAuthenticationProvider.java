@@ -37,7 +37,19 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			UsernamePasswordAuthenticationToken result = 
 				new UsernamePasswordAuthenticationToken(_id, _pw, roles);
 			
-			result.setDetails(new CustomUserDetails(_id, _pw, "ROLE_USER"));
+			result.setDetails(new CustomUserDetails(_id, _pw, roles));
+			
+			return result;
+		}
+		else if(_id.equals("admin1") && _pw.equals("1111")){
+			List<GrantedAuthority> roles = new ArrayList<>();
+			roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+			roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			
+			UsernamePasswordAuthenticationToken result = 
+				new UsernamePasswordAuthenticationToken(_id, _pw, roles);
+			
+			result.setDetails(new CustomUserDetails(_id, _pw, roles));
 			
 			return result;
 		}

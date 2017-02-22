@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,17 +41,19 @@ public class HomeController {
 	
 	@RequestMapping("/user/login")
 	public void login(){
-		
+	
 	}
 	
 	@RequestMapping("/user/login_success")
-	public void login_success(){
+	public void login_success(HttpSession session){
 		CustomUserDetails details =
 			(CustomUserDetails)SecurityContextHolder.getContext()
 								.getAuthentication().getDetails();
 		
 		logger.info("Welcome login_success! {}, {}", 
 				details.getUsername(), details.getPassword());
+		
+		session.setAttribute("userLogInfo", details);
 	}
 	
 	@RequestMapping("/user/login_duplicate")
@@ -58,7 +62,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/user/logout")
-	public void logout(){
+	public void logout(HttpSession session){
+		session.invalidate();
+	}
+	
+	@RequestMapping("/admin/admin")
+	public void admin(){
+		
+	}
+	
+	@RequestMapping("/page1")
+	public void page1(){
 		
 	}
 }
+
+
+

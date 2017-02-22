@@ -11,18 +11,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CustomUserDetails implements UserDetails{
 	private String username;
 	private String password;
-	private String role;
+	private ArrayList<GrantedAuthority> m_roles;
 	
-	public CustomUserDetails(String _username, String _password, String _role) {
+	public CustomUserDetails(String _username, String _password, List _roles) {
 		username = _username;
 		password = _password;
-		role = _role;
+		m_roles = (ArrayList)_roles;
 	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> roles = new ArrayList<>();
-		roles.add(new SimpleGrantedAuthority(role));
+		List<GrantedAuthority> roles = m_roles;
 		
 		return roles;
 	}

@@ -12,6 +12,7 @@
 	<http auto-config="true">
 		<intercept-url pattern="/user/login" access="permitAll"/>
 		<intercept-url pattern="/user/login_duplicate" access="hasRole('ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="isAuthenticated()"/>
 		
 		<form-login login-page="/user/login"
