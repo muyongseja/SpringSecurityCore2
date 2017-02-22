@@ -24,7 +24,8 @@
 			
 		<session-management>
 			<concurrency-control 
-				max-sessions="1" expired-url="/user/login_duplicate"/>
+				max-sessions="1" expired-url="/user/login_duplicate"
+				error-if-maximum-exceeded="true"/>
 		</session-management>
 	</http>
 	
