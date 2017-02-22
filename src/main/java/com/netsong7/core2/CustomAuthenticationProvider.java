@@ -37,7 +37,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			UsernamePasswordAuthenticationToken result = 
 				new UsernamePasswordAuthenticationToken(_id, _pw, roles);
 			
-			//result.setDetails(details);
+			result.setDetails(new CustomUserDetails(_id, _pw, "ROLE_USER"));
 			
 			return result;
 		}

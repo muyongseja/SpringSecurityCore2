@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,11 +44,21 @@ public class HomeController {
 	
 	@RequestMapping("/user/login_success")
 	public void login_success(){
+		CustomUserDetails details =
+			(CustomUserDetails)SecurityContextHolder.getContext()
+								.getAuthentication().getDetails();
 		
+		logger.info("Welcome login_success! {}, {}", 
+				details.getUsername(), details.getPassword());
 	}
 	
 	@RequestMapping("/user/login_duplicate")
 	public void login_duplicate(){
+		
+	}
+	
+	@RequestMapping("/user/logout")
+	public void logout(){
 		
 	}
 }
