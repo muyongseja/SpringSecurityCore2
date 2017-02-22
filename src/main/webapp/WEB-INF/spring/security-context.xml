@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<http pattern="/**/*.js" security="none"/>
+	<http pattern="/**/*.css" security="none"/>
+	<http pattern="/images/*" security="none"/>
+	
+	<http auto-config="true">
+		<intercept-url pattern="/user/login" access="permitAll"/>
+		<intercept-url pattern="/user/login_duplicate" access="hasRole('ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
+		
+		<form-login login-page="/user/login"
+			username-parameter="id"
+			password-parameter="pw"
+			login-processing-url="/user/loginProcess"
+			default-target-url="/user/login_success"
+			authentication-failure-url="/user/login"
+			always-use-default-target="true"/>
+			
+		<session-management>
+			<concurrency-control 
+				max-sessions="1" expired-url="/user/login_duplicate"/>
+		</session-management>
+	</http>
+	
+	<!--  
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="user1" password="1111" authorities="ROLE_USER"/>
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+	-->
+	
+	<!-- 사용자 정의 인증 처리 -->
+	<beans:bean id="customAuthenticationProvider" 
+		class="com.netsong7.core2.CustomAuthenticationProvider" />
+	
+	<authentication-manager>
+		<authentication-provider ref="customAuthenticationProvider" />
+	</authentication-manager>	
+</beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

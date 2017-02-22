@@ -1,0 +1,14 @@
+<form-login/>
+	login-page : 로그인 페이지 주소 지정
+	username-parameter : 로그인 페이지 form에 있는 username을 저장한 변수이름 지정
+	password-parameter : 로그인 페이지 form에 있는 password를 저장한 변수이름 지정
+	login-processing-url : 로그인 페이지 form action에 입력할 주소 지정
+	default-target-url : 로그인 성공인 경우 호출할 주소 지정
+	authentication-failure-url : 로그인 실패인 경우 호출할 주소 지정
+	always-use-default-target
+	
+* 중복 로그인
+<concurrency-control>
+	max-session : 중복 로그인이 가능한 세션 수
+	expired-url : 중복 로그인이 발생하면 먼저 로그인한 세션이 종료되며
+		세션이 끊어진 상태에서 모든 url을 호출할 경우 끊어진 원인을 알려줄 주소 지정
