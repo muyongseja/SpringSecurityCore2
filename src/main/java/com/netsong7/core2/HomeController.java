@@ -39,6 +39,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	/*
 	@RequestMapping("/user/login")
 	public void login(){
 	
@@ -75,6 +76,7 @@ public class HomeController {
 	public void page1(){
 		
 	}
+	*/
 }
 
 

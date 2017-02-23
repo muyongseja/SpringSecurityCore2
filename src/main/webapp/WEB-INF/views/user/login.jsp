@@ -14,6 +14,7 @@ isELIgnored="false"%>
 	password : <input type="text" name="pw"/><br><br>
 	<input type="submit" value="login"/>
 </form>
+<a href="addMember">회원 가입</a>
 </body>
 </html>
 
