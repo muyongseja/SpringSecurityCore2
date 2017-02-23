@@ -12,4 +12,14 @@
 		insert into tblMember(userid, userpw, username, email)
 		values(#{userid}, #{userpw}, #{username}, #{email})
 	</insert>
+	
+	<insert id="insertAuth">
+		insert into tblAuthorities(userid, authority)
+		values(#{userid}, #{authority})
+	</insert>
 </mapper>
+
+
+
+
+
