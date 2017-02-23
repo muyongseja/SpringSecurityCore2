@@ -42,13 +42,47 @@
 	-->
 	
 	<!-- 사용자 정의 인증 처리 -->
+	<!-- 
 	<beans:bean id="customAuthenticationProvider" 
 		class="com.netsong7.core2.CustomAuthenticationProvider" />
 	
 	<authentication-manager>
 		<authentication-provider ref="customAuthenticationProvider" />
-	</authentication-manager>	
+	</authentication-manager>
+	-->
+	
+	<!-- DB를 이용한 인증 처리 -->	
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select userid, userpw from tblMember where userid=?"
+				authorities-by-username-query="select userid, authority from tblAuthorities where userid=?"
+			/>
+			<password-encoder hash="bcrypt"/>
+		</authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="bcryptPasswordEncoAccess Deniedder" 
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 </beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

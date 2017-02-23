@@ -8,6 +8,7 @@
 <body>
 <h2>회원 가입</h2>
 <form method="post" action="addMember">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	아이디 : <input type="text" name="userid" /><br><br>
 	패스워드 : <input type="password" name="userpw" /><br><br>
 	이름 : <input type="text" name="username" /><br><br>
